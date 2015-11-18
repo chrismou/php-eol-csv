@@ -28,12 +28,12 @@ class Csv
      * Initialise the file handler
      *
      * @param string  $fileName name of file
-     * @param boolean $savePath destination path of output file (false triggers a direct download)
+     * @param string  $savePath destination path of output file (leave blank to trigger a direct download)
      * @param string  $eol end of line character
      * @param string  $delimiter delimiter character
      * @param string  $enclosure characters that will enclose each field
      */
-    public function open($fileName, $savePath = false, $eol = "\n", $delimiter = ",", $enclosure = '"')
+    public function open($fileName, $savePath = '', $eol = "\n", $delimiter = ",", $enclosure = '"')
     {
         $this->eol = $eol;
         $this->delimiter = $delimiter;
@@ -52,7 +52,7 @@ class Csv
      *
      * @param array $fields row of data fields
      */
-    public function write($fields = array())
+    public function write(array $fields = array())
     {
         fputcsv($this->fileHandler, $fields, $this->delimiter, $this->enclosure);
 

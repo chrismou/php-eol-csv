@@ -26,7 +26,7 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(vfsStreamWrapper::getRoot()->hasChild('testFile.csv'));
 
         $csv->open("testFile", vfsStream::url('testDir/'));
-        $csv->write([]);
+        $csv->write(array());
         $csv->close();
 
         $this->assertTrue(vfsStreamWrapper::getRoot()->hasChild('testFile.csv'));
@@ -40,7 +40,7 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $csv = new Csv();
 
         $csv->open("testFile", vfsStream::url('testDir/'));
-        $csv->write(["cell,1", "cell2"]);
+        $csv->write(array("cell,1", "cell2"));
         $csv->close();
 
         $content = file_get_contents(vfsStream::url('testDir/testFile.csv'));
@@ -56,8 +56,8 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $csv = new Csv();
 
         $csv->open("testFile", vfsStream::url('testDir/'));
-        $csv->write(["cell1", "cell2"]);
-        $csv->write(["cell3", "cell4"]);
+        $csv->write(array("cell1", "cell2"));
+        $csv->write(array("cell3", "cell4"));
         $csv->close();
 
         $content = file_get_contents(vfsStream::url('testDir/testFile.csv'));
@@ -73,7 +73,7 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $csv = new Csv();
 
         $csv->open("testFile", vfsStream::url('testDir/'), "\r\n");
-        $csv->write(["cell1", "cell2"]);
+        $csv->write(array("cell1", "cell2"));
         $csv->close();
 
         $content = file_get_contents(vfsStream::url('testDir/testFile.csv'));
@@ -89,7 +89,7 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $csv = new Csv();
 
         $csv->open("testFile", vfsStream::url('testDir/'), "\n", ":");
-        $csv->write(["cell1", "cell2"]);
+        $csv->write(array("cell1", "cell2"));
         $csv->close();
 
         $content = file_get_contents(vfsStream::url('testDir/testFile.csv'));
@@ -105,7 +105,7 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $csv = new Csv();
 
         $csv->open("testFile", vfsStream::url('testDir/'), "\n", ",", "'");
-        $csv->write(["cell,1", "cell2"]);
+        $csv->write(array("cell,1", "cell2"));
         $csv->close();
 
         $content = file_get_contents(vfsStream::url('testDir/testFile.csv'));
@@ -122,7 +122,7 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $csv = new Csv();
 
         $csv->open("testFile", false);
-        $csv->write(["cell1", "cell2"]);
+        $csv->write(array("cell1", "cell2"));
 
         $content = ob_get_contents();
 

@@ -25,32 +25,46 @@ class Csv
     protected $enclosure;
 
     /**
+     * @var string
+     */
+    protected $fullFileName;
+
+    /**
      * Initialise the file handler
      *
-     * @param string  $fileName name of file
-     * @param string  $savePath destination path of output file (leave blank to trigger a direct download)
-     * @param string  $eol end of line character
-     * @param string  $delimiter delimiter character
-     * @param string  $enclosure characters that will enclose each field
+     * @param string $fileName      The filename to use (not including file extension)
+     * @param string $savePath      The path to save the file to. Leaving blank triggers a direct download
+     * @param string $eol           The EOL character to use
+     * @param string $fileExtension The file extension to use
+     * @param string $delimiter     The delimiter to use between fields
+     * @param string $enclosure     The enclosure character to use for fields that require it
      */
-    public function open($fileName, $savePath = '', $eol = "\n", $delimiter = ",", $enclosure = '"')
-    {
+    public function open(
+        $fileName,
+        $savePath = '',
+        $eol = "\n",
+        $fileExtension = 'csv',
+        $delimiter = ",",
+        $enclosure = '"'
+    ) {
         $this->eol = $eol;
         $this->delimiter = $delimiter;
         $this->enclosure = $enclosure;
+        $this->fullFileName = $fileName . "." . $fileExtension;
+
 
         if ($savePath) {
-            $this->fileHandler = fopen($savePath . $fileName . ".csv", 'w');
+            $this->fileHandler = fopen($savePath . $this->fullFileName, 'w');
         } else {
             $this->fileHandler = fopen('php://output', 'w');
-            $this->setStreamHeaders($fileName);
+            $this->setStreamHeaders();
         }
     }
 
     /**
      * Write a line to the csv file
      *
-     * @param array $row row of data fields
+     * @param array $row    array of data fields to place on a row
      */
     public function write(array $row = array())
     {
@@ -73,10 +87,10 @@ class Csv
     /**
      * Set the stream headers for direct download
      */
-    protected function setStreamHeaders($fileName)
+    protected function setStreamHeaders()
     {
         header("Content-type: text/csv");
-        header("Content-Disposition: attachment; filename={$fileName}.csv");
+        header("Content-Disposition: attachment; filename={$this->fullFileName}.csv");
         header("Pragma: no-cache");
         header("Expires: 0");
     }

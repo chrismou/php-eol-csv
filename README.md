@@ -6,9 +6,9 @@
 
 # About
 
-This exists for one specific purpose - to provide a class for creating CSV files in PHP, while also allowing you to set a custom end-of-line character.
+This class provides the flexibility of creating CSV files in PHP with a custom end-of-line character.
 
-fputcsv allows you to specify a field delimiter, but strangely doesn't let you set the EOL character - which, when it insists on \n,
+PHP's `fputcsv` function allows you to specify a field delimiter, but strangely doesn't let you set the EOL character - which, when it insists on `\n`,
 isn't always helpful when the files are destined for Windows based systems.
 
 ## Install
@@ -30,14 +30,15 @@ $csv = new \Chrismou\PhpEolCsv\Csv;
 Open a CSV file for editing:
 
 ```
-$csv->open($fileName, $savePath, $eol, $delimiter, $enclosure);
+$csv->open($fileName, $savePath, $eol, $fileExtension, $delimiter, $enclosure);
 ```
 
-- **$filename** (required) - the filename to use.
+- **$filename** (required) - the filename to use. Don't include the file extension, this can be set seperately.
 - **$savePath** - The path to save the file. Leaving this blank will save directly to the output buffer for a direct download.
-- **$eol** - The EOL character/string to use. Defaults to \n.
-- **$delimiter** - The character/string to use as a separator between fields.
-- **enclosure** - The character to use to enclose multi-word strings, or strings that include the delimiter character.
+- **$eol** - The EOL character/string to use. Defaults to `\n`.
+- **$fileExtension** - The file extension to use. Defaults to `csv`.
+- **$delimiter** - The character/string to use as a separator between fields. Defaults to `,`
+- **enclosure** - The character to use to enclose multi-word strings, or strings that include the delimiter character. Defaults to `"`
 
 Write a row to the CSV:
 
@@ -67,7 +68,7 @@ php composer.phar install
 
 A [DUnit](https://github.com/Vectorface/dunit) config file is also included, allowing you to easily run tests on all supported PHP versions.
 
-First, you need to have docker installed. This is fairly simple on Linux - on OSX, take a look at [docker machine](https://docs.docker.com/machine/).
+First, you need to have docker installed. This is fairly simple on Linux - on OSX and Windows, take a look at [docker machine](https://docs.docker.com/machine/).
 
 Assuming you have composer setup (see above), run the tests with the following command:
 

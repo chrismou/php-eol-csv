@@ -84,11 +84,27 @@ class CsvTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_uses_a_custom_file_extension()
+    {
+        $csv = new Csv();
+
+        $csv->open("testFile", vfsStream::url('testDir/'), "\n", "txt", ",", "'");
+        $csv->write(array("cell,1", "cell2"));
+        $csv->close();
+
+        $content = file_get_contents(vfsStream::url('testDir/testFile.txt'));
+
+        $this->assertEquals("'cell,1',cell2\n", $content);
+    }
+
+    /**
+     * @test
+     */
     public function it_uses_a_custom_delimiter()
     {
         $csv = new Csv();
 
-        $csv->open("testFile", vfsStream::url('testDir/'), "\n", ":");
+        $csv->open("testFile", vfsStream::url('testDir/'), "\n", "csv", ":");
         $csv->write(array("cell1", "cell2"));
         $csv->close();
 
@@ -104,7 +120,7 @@ class CsvTest extends PHPUnit_Framework_TestCase
     {
         $csv = new Csv();
 
-        $csv->open("testFile", vfsStream::url('testDir/'), "\n", ",", "'");
+        $csv->open("testFile", vfsStream::url('testDir/'), "\n", "csv", ",", "'");
         $csv->write(array("cell,1", "cell2"));
         $csv->close();
 

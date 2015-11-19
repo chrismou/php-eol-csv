@@ -1,6 +1,6 @@
 {
     "name": "chrismou/php-eol-csv",
-    "description": "A class for creating CSV files in PHP, allowing you to set a custom end-of-line character",
+    "description": "A class for creating CSV files, allowing you to set a custom end-of-line character",
     "type": "library",
     "homepage": "http://github.com/chrismou/php-eol-csv",
     "license": "MIT",
@@ -22,7 +22,8 @@
         "phpunit/phpunit": "~4.0",
         "squizlabs/php_codesniffer": "*",
         "mikey179/vfsStream": "~1",
-        "vectorface/dunit": "^2.1"
+        "vectorface/dunit": "^2.1",
+        "codeclimate/php-test-reporter": "dev-master"
     },
     "autoload": {
         "psr-4": {

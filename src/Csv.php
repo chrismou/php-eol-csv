@@ -50,11 +50,11 @@ class Csv
     /**
      * Write a line to the csv file
      *
-     * @param array $fields row of data fields
+     * @param array $row row of data fields
      */
-    public function write(array $fields = array())
+    public function write(array $row = array())
     {
-        fputcsv($this->fileHandler, $fields, $this->delimiter, $this->enclosure);
+        fputcsv($this->fileHandler, $row, $this->delimiter, $this->enclosure);
 
         // Have we specified a custom EOL? If so, apply to the row
         if ("\n" != $this->eol && 0 === fseek($this->fileHandler, -1, SEEK_CUR)) {

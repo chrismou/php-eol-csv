@@ -33,7 +33,7 @@ Open a CSV file for editing:
 $csv->open($fileName, $savePath, $eol, $fileExtension, $delimiter, $enclosure);
 ```
 
-- **$filename** (required) - the filename to use. Don't include the file extension, this can be set seperately.
+- **$fileName** (required) - the filename to use. Don't include the file extension, this can be set seperately.
 - **$savePath** - The path to save the file. Leaving this blank will save directly to the output buffer for a direct download.
 - **$eol** - The EOL character/string to use. Defaults to `\n`.
 - **$fileExtension** - The file extension to use. Defaults to `csv`.

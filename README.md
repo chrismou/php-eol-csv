@@ -4,12 +4,12 @@
 [![Test Coverage](https://codeclimate.com/github/chrismou/php-eol-csv/badges/coverage.svg)](https://codeclimate.com/github/chrismou/php-eol-csv/coverage)
 [![Code Climate](https://codeclimate.com/github/chrismou/php-eol-csv/badges/gpa.svg)](https://codeclimate.com/github/chrismou/php-eol-csv)
 
-# About
+## About
 
 This class provides the flexibility of creating CSV files in PHP with a custom end-of-line character.
 
 PHP's `fputcsv` function allows you to specify a field delimiter, but strangely doesn't let you set the EOL character - which, when it insists on `\n`,
-isn't always helpful when the files are destined for Windows based systems.
+isn't always helpful when the files are destined for people to view/edit on a Windows based systems.
 
 ## Install
 
@@ -37,8 +37,8 @@ $csv->open($fileName, $savePath, $eol, $fileExtension, $delimiter, $enclosure);
 - **$savePath** - The path to save the file. Leaving this blank will save directly to the output buffer for a direct download.
 - **$eol** - The EOL character/string to use. Defaults to `\n`.
 - **$fileExtension** - The file extension to use. Defaults to `csv`.
-- **$delimiter** - The character/string to use as a separator between fields. Defaults to `,`
-- **enclosure** - The character to use to enclose multi-word strings, or strings that include the delimiter character. Defaults to `"`
+- **$delimiter** - The character/string to use as a separator between fields. Defaults to `,`.
+- **enclosure** - The character to use to enclose multi-word strings, or strings that include the delimiter character. Defaults to `"`.
 
 Write a row to the CSV:
 

@@ -3,6 +3,7 @@
 [![Travis Build Status](https://travis-ci.org/chrismou/php-eol-csv.svg)](https://travis-ci.org/chrismou/php-eol-csv)
 [![Test Coverage](https://codeclimate.com/github/chrismou/php-eol-csv/badges/coverage.svg)](https://codeclimate.com/github/chrismou/php-eol-csv/coverage)
 [![Code Climate](https://codeclimate.com/github/chrismou/php-eol-csv/badges/gpa.svg)](https://codeclimate.com/github/chrismou/php-eol-csv)
+[![Buy me a beer](https://img.shields.io/badge/donate-PayPal-019CDE.svg)](https://www.paypal.me/chrismou)
 
 ## About
 

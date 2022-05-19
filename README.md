@@ -1,3 +1,6 @@
+## Archived
+When I wrote this it did exactly what I needed it to do, but with the number of great 3rd party packages available now it's not really needed anymore. If you want full control of your CSVs, check out the excellent [phpleague/csv](https://csv.thephpleague.com/)
+
 # PHP Custom end-of-line CSV class
 
 [![Travis Build Status](https://travis-ci.org/chrismou/php-eol-csv.svg)](https://travis-ci.org/chrismou/php-eol-csv)
